@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dark-primary: #de9c98;
+  --dark-secondary: #29617e;
+  --dark-accent: #804dc5;
+  --dark-text: #f8e8e8;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
