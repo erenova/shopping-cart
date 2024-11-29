@@ -12,7 +12,7 @@ import {
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ navs, setPageState }) => {
+const Navbar = ({ navs }) => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [sideBar, setSideBar] = useState(false);
   const icons = {
@@ -110,9 +110,6 @@ const Navbar = ({ navs, setPageState }) => {
                             to={`skins/${category}/${key}`}
                             className="px-4 py-2 hover:bg-gray-100 hover:text-black cursor-pointer bg-black w-36 sm:w-44 select-none "
                             key={value}
-                            onClick={() => {
-                              setPageState("skins");
-                            }}
                           >
                             {value}
                           </Link>
@@ -167,9 +164,6 @@ const Navbar = ({ navs, setPageState }) => {
                           to={`skins/${category}/${key}`}
                           className="px-4 py-2 hover:bg-gray-100 hover:text-black cursor-pointer bg-black"
                           key={value}
-                          onClick={() => {
-                            setPageState("skins");
-                          }}
                         >
                           {value}
                         </Link>

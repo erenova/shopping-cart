@@ -1,11 +1,8 @@
 import PropTypes from "prop-types";
-import Navbar from "../modules/Navbar";
 
-const Homepage = ({ navs, setPageState }) => {
+const Homepage = () => {
   return (
     <div>
-      <Navbar navs={navs} setPageState={setPageState} />
-
       <div className="">homepage</div>
     </div>
   );

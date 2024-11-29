@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import Homepage from "./pages/Homepage";
-import SkinsPage from "./pages/SkinsPage";
 import Loading from "./modules/Loading";
 import Cart from "./pages/Cart";
+import { Route, Routes } from "react-router-dom";
+import Skins from "./modules/Skins";
+import Navbar from "./modules/Navbar";
+import Error from "./routes/Error";
 
 export default function App() {
   const [categories, setCategories] = useState({});
-  const [pageState, setPageState] = useState("loading");
+  const [loading, setLoading] = useState(true);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -42,8 +45,9 @@ export default function App() {
           categorizedData[category][weaponId.id].products.push(item);
         });
         setCategories({ ...categorizedData });
-        setPageState("skins");
+        setLoading(false);
         console.log(categorizedData);
+        console.log(cartItems);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -51,33 +55,37 @@ export default function App() {
     fetchData();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="text-white">
+        <div className="fixed top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+        <Loading />
+      </div>
+    );
+  }
+
   return (
     <div className="text-white">
       <div className="fixed top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-      {pageState === "loading" && <Loading />}
-      {pageState === "homepage" && (
-        <Homepage navs={categories} setPageState={setPageState} />
-      )}
-      {pageState === "skins" && (
-        <SkinsPage
-          navs={categories}
-          cartItems={cartItems}
-          setCartItems={setCartItems}
-          setPageState={setPageState}
+      <Navbar navs={categories} />
+
+      <Routes>
+        <Route
+          path="skins/:weaponType/:weaponId"
+          element={
+            <Skins
+              categories={categories}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          }
         />
-      )}
-      {pageState === "cart" && (
-        <Cart
-          navs={categories}
-          cartItems={cartItems}
-          setCartItems={setCartItems}
-          setPageState={setPageState}
+
+        <Route
+          path="cart"
+          element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
         />
-      )}
-      {/* 
-      <Link to={"/h"} className="text-white" variant="contained">
-        hey
-      </Link> */}
+      </Routes>
     </div>
   );
 }

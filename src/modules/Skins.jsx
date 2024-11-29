@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link, useOutletContext, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const Skins = () => {
-  const navs = useOutletContext().navs;
-  const cartItems = useOutletContext().cartItems;
-  const setCartItems = useOutletContext().setCartItems;
-  const setPageState = useOutletContext().setPageState;
+const Skins = ({ categories, setCartItems, cartItems }) => {
+  console.log(categories);
   const [wearPopup, setWearPopup] = useState(null);
   const [popups, setPopups] = useState([]);
   const [isWiggling, setIsWiggling] = useState(false);
   const { weaponType, weaponId } = useParams();
-  const products = navs[weaponType][weaponId].products;
+  const products = categories[weaponType][weaponId].products;
 
   const addPopup = (fullName) => {
     const id = Date.now();
@@ -27,10 +24,9 @@ const Skins = () => {
       {
         id: product.id,
         name: product.name,
-        image: product.image,
+        img: product.image,
         stattrak: product.stattrak,
         rarityColor: product.rarity.color,
-        quantity: 1,
         wear: wear.name,
         fullName: `${product.name} (${wear.name})`,
       },
@@ -50,9 +46,6 @@ const Skins = () => {
       <Link
         to="/cart"
         className="flex flex-col justify-center items-center bottom-8 right-8 fixed lg:bottom-auto lg:right-12 text-4xl  z-20 lg:top-8  "
-        onClick={() => {
-          setPageState("cart");
-        }}
       >
         <div className="text-white bg-black border rounded-full p-4">
           <FaShoppingCart />
