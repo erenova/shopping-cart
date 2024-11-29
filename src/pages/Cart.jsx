@@ -12,7 +12,7 @@ const Cart = ({ cartItems, setCartItems }) => {
   console.log(cartItems);
   return (
     <div className=" lg:w-3/4 lg:max-w-4xl flex flex-col   ">
-      <div className="lg:pl-52 lg:w-3/4 lg:max-w-4xl sm:p-14 p-6 flex flex-col gap-4 max-h-[34rem] w-3/4 place-self-center lg:place-self-auto mt-8 overflow-auto ">
+      <div className="lg:pl-52 lg:w-3/4 lg:max-w-4xl sm:p-14 p-6 flex flex-col gap-4 max-h-[30rem] w-3/4 place-self-center lg:place-self-auto mt-8 overflow-auto ">
         {cartItems.map((cartItem) => {
           return (
             <div key={cartItem.id} className="flex border rounded p-4 relative">
