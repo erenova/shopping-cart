@@ -28,7 +28,7 @@ const Navbar = ({ navs }) => {
     <div className="flex lg:gap-10 text-xl lg:py-6 lg:px-6">
       <Link to="/">
         <img
-          src="../../src/assets/cs2logo.png"
+          src="./../../src/assets/cs2logo.png"
           className="w-20 lg:w-28 mt-2 ml-4"
           alt=""
         />

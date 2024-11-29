@@ -69,7 +69,7 @@ const Skins = ({ categories, setCartItems, cartItems }) => {
             >
               {product.stattrak && (
                 <img
-                  src="../../src/assets/stattrak.png"
+                  src="./../../src/assets/stattrak.png"
                   className="w-10 lg:w-16 absolute top-2 right-2"
                 />
               )}
