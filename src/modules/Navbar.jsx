@@ -27,7 +27,7 @@ const Navbar = ({ navs }) => {
   return (
     <div className="flex lg:gap-10 text-xl lg:py-6 lg:px-6">
       <Link to="/">
-        <img src="./cs2logo.png" className="w-20 lg:w-28 mt-2 ml-4" alt="" />
+        <img src="/../cs2logo.png" className="w-20 lg:w-28 mt-2 ml-4" alt="" />
       </Link>
       <div
         className="text-5xl fixed top-5 right-8 lg:hidden z-10"
