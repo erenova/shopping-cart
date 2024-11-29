@@ -9,6 +9,7 @@ const Cart = ({ cartItems, setCartItems }) => {
       setPopups((prev) => prev.filter((popup) => popup.id !== id));
     }, 2000);
   };
+
   console.log(cartItems);
   return (
     <div className=" lg:w-3/4 lg:max-w-4xl flex flex-col   ">
@@ -18,7 +19,14 @@ const Cart = ({ cartItems, setCartItems }) => {
             <div key={cartItem.id} className="flex border rounded p-4 relative">
               <div className="flex items-center gap-8 pl-8 ">
                 <img src={cartItem.img} className="w-16" alt="" />
-                <span style={{ color: cartItem.rarityColor }}>
+                <span
+                  className={cartItem.souvenir && "text-[#ffd700]"}
+                  style={
+                    !cartItem.souvenir
+                      ? { color: cartItem.rarityColor }
+                      : { color: "#ffd700" }
+                  }
+                >
                   {cartItem.fullName}
                 </span>
               </div>

@@ -26,6 +26,7 @@ const Skins = ({ categories, setCartItems, cartItems }) => {
         name: product.name,
         img: product.image,
         stattrak: product.stattrak,
+        souvenir: product.souvenir,
         rarityColor: product.rarity.color,
         wear: wear.name,
         fullName: `${product.name} (${wear.name})`,
@@ -73,6 +74,11 @@ const Skins = ({ categories, setCartItems, cartItems }) => {
                   className="w-10 lg:w-16 absolute top-2 right-2"
                 />
               )}
+              {product.souvenir && (
+                <div className="absolute top-2 left-2 text-lg text-[#ffd700]">
+                  Souvenir
+                </div>
+              )}
               <div className="w-36 md:w-36 lg:w-44 flex flex-col justify-start items-center">
                 <img
                   src={product.image}
@@ -80,7 +86,9 @@ const Skins = ({ categories, setCartItems, cartItems }) => {
                   className={`w-36 md:w-36 lg:w-44 border-b-2 `}
                   style={{ borderColor: product.rarity.color }}
                 />
-                <div className="">{product.name}</div>
+                <div className={product.souvenir && "text-[#ffd700]"}>
+                  {product.name}
+                </div>
               </div>
               <div className="mt-2 flex gap-3 items-center justify-center relative">
                 <button
