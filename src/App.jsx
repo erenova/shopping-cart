@@ -11,6 +11,7 @@ export default function App() {
   const [categories, setCategories] = useState({});
   const [loading, setLoading] = useState(true);
   const [cartItems, setCartItems] = useState([]);
+  let [itemsRaw, setItemsRaw] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,7 +20,6 @@ export default function App() {
           "https://bymykel.github.io/CSGO-API/api/en/skins.json",
         );
         const data = await response.json();
-
         const categorizedData = {};
 
         data.forEach((item) => {
@@ -46,8 +46,7 @@ export default function App() {
         });
         setCategories({ ...categorizedData });
         setLoading(false);
-        console.log(categorizedData);
-        console.log(cartItems);
+        setItemsRaw(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -70,6 +69,17 @@ export default function App() {
       <Navbar navs={categories} />
 
       <Routes>
+        <Route
+          path="/"
+          element={
+            <Homepage
+              rawItems={itemsRaw}
+              categories={categories}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          }
+        />
         <Route
           path="skins/:weaponType/:weaponId"
           element={

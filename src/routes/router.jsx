@@ -1,7 +1,6 @@
 import Cart from "../pages/Cart.jsx";
 import Error from "../routes/Error.jsx";
 import App from "../App.jsx";
-import Homepage from "../pages/Homepage.jsx";
 import Skins from "../modules/Skins.jsx";
 
 const routes = [
