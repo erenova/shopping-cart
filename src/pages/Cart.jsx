@@ -24,7 +24,7 @@ const Cart = ({ cartItems, setCartItems }) => {
               </div>
               {cartItem.stattrak && (
                 <img
-                  src="./../../src/assets/stattrak.png"
+                  src="./stattrak.png"
                   className="w-10 lg:w-12 absolute left-1 top-1"
                 />
               )}
